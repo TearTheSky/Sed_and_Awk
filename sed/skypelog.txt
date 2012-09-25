@@ -1,0 +1,31 @@
+ed せど
+[20:23:39] TearTheSky(てあざすかい）: awk おーく
+[20:23:46] TearTheSky(てあざすかい）: せっど
+[20:26:18] TearTheSky(てあざすかい）: ログ解析は強いと思う　→　勉強しまっしょう
+[20:29:09] TearTheSky(てあざすかい）: sed と awk はストリームエディタ
+[20:29:18] TearTheSky(てあざすかい）: パターンマッチング
+[20:29:39] TearTheSky(てあざすかい）: シェルスクリプトと組み合わせて使える
+[20:30:10] TearTheSky(てあざすかい）: 正規表現を覚えたほうが良い
+[20:31:58] TearTheSky(てあざすかい）: ed でアドレスを指定するときは対象を増やすとき
+[20:32:12] TearTheSky(てあざすかい）: sedでアドレスを指定するときは対象を絞るとき
+[20:33:15] TearTheSky(てあざすかい）: ゆぐさんはイケボでした///（てあざすかい）
+[20:37:11] TearTheSky(てあざすかい）: スクリプト化できるから使いまわすことができる
+[20:41:22] TearTheSky(てあざすかい）: grepとviとsedの挙動の違い
+[20:41:53] TearTheSky(てあざすかい）: viのコマンド全然わかりませんテヘペロ（てあざすかい）
+[20:44:21] TearTheSky(てあざすかい）: http://www.amazon.co.jp/exec/obidos/ASIN/4774147958/ref=nosim/?tag=bigsky-22
+[20:50:08] TearTheSky(てあざすかい）: POSIX準拠のやつとかそうじゃないやつとかいくつか種類がある
+[20:52:25] TearTheSky(てあざすかい）: http://www.vector.co.jp/vpack/filearea/win/util/text/sed/
+[20:53:24] TearTheSky(てあざすかい）: sedはWindows版もあります
+[21:01:25] TearTheSky(てあざすかい）: スクリプトはそういえば定義なしでいきなり変数が使える…
+[21:03:50] TearTheSky(てあざすかい）: 正規表現はいっぱい練習したほうがいいな…（遠い目）
+[21:04:56] TearTheSky(てあざすかい）: ハット
+[21:05:02] TearTheSky(てあざすかい）: サーカムフレックス
+[21:09:05] TearTheSky(てあざすかい）: http://wwws.kobe-c.ac.jp/deguchi/c/prob/pe4.html
+[21:09:56] TearTheSky(てあざすかい）: a^3 は　aの3乗
+[21:11:10] TearTheSky(てあざすかい）: C言語だと論理演算子
+[21:17:48] TearTheSky(てあざすかい）: UnixもWindowsもスクリプトとかが書けると良い感じ
+[21:18:18] TearTheSky(てあざすかい）: 書けないひとは周りにいっぱいいるけどね…ｗ
+[21:19:53] TearTheSky(てあざすかい）: 忙しい→自動化のネタがたくさん転がってる→チャンス！
+
+ツイログ（twilog）で自分のつぶやきを解析しよう
+
