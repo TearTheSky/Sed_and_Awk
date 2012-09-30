@@ -1,8 +1,10 @@
 #========================================
-# Author : TearTheSky
-# This Program is count tweets contained
-# keyword as your input form Twilog CSV
-# File
+# Author	: TearTheSky
+# Function	: 
+# 	C[ount]	: This Program Counts Your Tweets Contained
+#		  Keyword You Want
+# 	Q[uit]	: Exit Program
+# 
 #=======================================
 
 function CountSearchWord2(searchWord, input) {
