@@ -100,6 +100,7 @@ function reportStatisticsTweet(searchWord, input) {
                 }
         }
         close(input)
+	
         #Print Search Result
 	print ""
         print "-------------------- つぶやき統計レポート --------------------"
@@ -113,11 +114,11 @@ function reportStatisticsTweet(searchWord, input) {
 	print ""
 
 	#for(each)文を回して月別の統計を出力する。
-	for(postedMonth in arrayOfMonth) {
-	        print " [月別つぶやき統計：" arrayOfMonth[postedMonth]  "]"
-		print " " arrayOfMonth[postedMonth] "のつぶやき数：" quantityOfMonthlyTweets[arrayOfMonth[postedMonth]]
+	for(reportIndex = index_arrayOfMonth; reportIndex >= 1; reportIndex--) {
+	        print " [月別つぶやき統計：" arrayOfMonth[reportIndex]  "]"
+		print " " arrayOfMonth[reportIndex] "のつぶやき数：" quantityOfMonthlyTweets[arrayOfMonth[reportIndex]]
 		printf " 対象ファイル全つぶやきに対する当月のつぶやき率："
-		printf("%.2f%\n",(quantityOfMonthlyTweets[arrayOfMonth[postedMonth]] / allTweets) * 100)
+		printf("%.2f%\n",(quantityOfMonthlyTweets[arrayOfMonth[reportIndex]] / allTweets) * 100)
 		print ""
 	}
         print "--------------------------------------------------------------"
