@@ -8,10 +8,80 @@
 #////////////////////////////////////////////////////////////////////////////////
 
 #============================================================
-#
+
 #============================================================
-function CountSearchWord(searchWord, input) {
+function getMessage( messageNo ) {
+
+message = messageNo
+
+#-----------------
+# Mode_01
+#-----------------
+messageBox["Mode_01"] = "\n==================================================\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  "Please Select Analyse Mode\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  "--------------------------------------------------\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  " A : Analyse Twilog\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  " C : Count the Word What You Wnat\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  " Q : Quit This Program\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  "==================================================\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  "Please Select Analyse Mode\n"
+messageBox["Mode_01"] = messageBox["Mode_01"]  "Your Choice Mode is ... "
+
+
+#-----------------
+# Analyse_01
+#-----------------
+messageBox["Analyse_01"] = "\n統計レポート出力モードを選択しました。\n"
+messageBox["Analyse_01"] = messageBox["Analyse_01"] "件数を検索したいキーワードを入力してください。\n"
+messageBox["Analyse_01"] = messageBox["Analyse_01"] "月別にそのキーワードを含むつぶやきが何件存在\n"
+messageBox["Analyse_01"] = messageBox["Analyse_01"] "するのかを確認します。\n"
+messageBox["Analyse_01"] = messageBox["Analyse_01"] "\n検索キーワード："
+
+
+printf messageBox[message]
+
+}
+
+
+
+#============================================================
+# modeSelect(            MODE, existMode)
+#============================================================
+function modeSelect(		MODE, existMode) {
+	
+	# /[aAcCqQ]/
+	
+	#Show Main Menu Message
+        getMessage("Mode_01")
+
+	#processing branch with MODE
+	#get the MODE what user want
+	getline MODE < "-"
+	while(MODE !~ /[aAcCqQ]/) {
+		print "Oops. your selected mode don't exist"
+		print "please retry to select mode"
+		printf "Your Choice Mode is ... "
+		getline MODE < "-"
+	}
+	return MODE
+}
+
+#============================================================
+# CountSearchWord(input)
+#============================================================
+function CountSearchWord(input) {
+
+	#flag
         nextAct = 1
+	#Keyword Hits Counter
+	hits = 0
+	#Require User Input
+	#This Is Used as Search Keyword
+	print ""
+	print "Please The Word What You Want To Search"
+	printf("searchWord is :")
+	getline searchWord < "-"
+
         while(nextAct > 0) {
                 nextAct = getline < input
                 if($3 ~ searchWord) {
@@ -31,7 +101,10 @@ function CountSearchWord(searchWord, input) {
 }
 
 
-function reportStatisticsTweet(searchWord, input) {
+#============================================================
+#
+#============================================================
+function reportStatisticsTweet(input) {
 	# variable setting
         allTweets = 0			# tweets
 	endOfLine = 1			# flag of check inputfile's end
@@ -40,7 +113,13 @@ function reportStatisticsTweet(searchWord, input) {
  	index_arrayOfMonth = 0		#"arrayOfMonth"'s index
 	lastMonthlyPost = " "
 
-       while(endOfLine > 0) {
+	#show message require input
+	printf getMessage("Analyse_01")
+
+        getline searchWord < "-"
+        print "レポートを作成しています…しばしお待ちを;)"
+
+	while(endOfLine > 0) {
 		endOfLine = getline < input
  		aRecord = $0
 		# if tweet contains CR, read next line
@@ -139,50 +218,16 @@ BEGIN{
 #============================================================
 {
 	while(MODE !~ /[qQ]/) {
-        	print ""
-		print "=================================================="
-        	print "Please Select Analyse Mode"
-        	print "--------------------------------------------------"
-        	print " A : Analyse Twilog"
-        	print " C : Count the Word What You Wnat"
-        	print " Q : Quit This Program"
-		print "=================================================="
-        	print "Please Select Analyse Mode"
-        	printf("Your Choice Mode is ... ")
 
-        	#processing branch with MODE
-        	#get the MODE what user want
-        	getline MODE < "-"
+		MODE = modeSelect()
 
         	#word count mode
         	if(MODE ~ /[cC]/) {
-			#Set Field Separater is Conma
-			FS=","
-			#Keyword Hits Counter
-			hits = 0
-			#Require User Input
-			#This Is Used as Search Keyword
-			print ""
-			print "Please The Word What You Want To Search"
-			printf("searchWord is :")
-			getline searchWord < "-"
-
-			CountSearchWord(searchWord, ARGV[1])
+			CountSearchWord(ARGV[1])
         	}
         	#show analyse report mode
         	else if(MODE ~ /[aA]/) {
-			print ""
-                	print "統計レポート出力モードを選択しました。"
-			
-	                print ""
-                        print "件数を検索したいキーワードを入力してください。"
-			print "月別にそのキーワードを含むつぶやきが何件存在"
-			print "するのかを確認します。"
-                        printf("検索キーワード：")
-                        getline searchWord < "-"
-			print "レポートを作成しています…しばしお待ちを;)"
-
-                        reportStatisticsTweet(searchWord, ARGV[1])
+                        reportStatisticsTweet(ARGV[1])
         	}
 	}
 	exit
@@ -192,7 +237,7 @@ BEGIN{
 #END routine
 #============================================================
 END{
-        print "Thankyou for Playing me! goodbey!"
+        print "Thank you for Playing me! goodbye!"
 	print ""
 }
 
